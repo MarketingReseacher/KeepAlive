@@ -1,0 +1,14 @@
+name: Keep Streamlit Awake
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # every 10 minutes
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl ping
+        run: |
+          curl --silent --head https://price-increase-justifications.streamlit.app
